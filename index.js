@@ -23,7 +23,11 @@ app.use(express.json());
 //todo lo que el archivo auth exporte lo va a habilitar en la ruta de api/auth
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/events', require('./routes/events'));
-// TODO: CRUD: Eventos
+
+app.get('*', (req, resp) => {
+    resp.sendFile(__dirname + '/public/index.html');
+})
+
 
 //Escuchar peticiones
 app.listen(process.env.PORT, () => {
